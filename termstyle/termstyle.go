@@ -1,12 +1,37 @@
 package termstyle
 
-import "fmt"
+import (
+	"fmt"
+	"os/exec"
+	"strconv"
+	"strings"
+)
 
 const nc string = "\033[0m"
 
+var (
+	inited       = false
+	supportColor = false
+)
+
+func init() {
+	if inited {
+		return
+	}
+
+	inited = true
+	res, err := exec.Command("tput", "colors").Output()
+	intRes, _ := strconv.Atoi(strings.TrimSpace(string(res)))
+
+	if intRes > 2 && err == nil {
+		supportColor = true
+	}
+}
+
 // Style style str with otps
 func Style(str string, opts ...string) string {
-	if len(opts) == 0 {
+	fmt.Println(supportColor)
+	if !supportColor || len(opts) == 0 {
 		return str
 	}
 
