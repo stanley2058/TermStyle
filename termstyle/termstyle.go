@@ -30,7 +30,6 @@ func init() {
 
 // Style style str with otps
 func Style(str string, opts ...string) string {
-	fmt.Println(supportColor)
 	if !supportColor || len(opts) == 0 {
 		return str
 	}
