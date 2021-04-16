@@ -1,6 +1,10 @@
 package background
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/stanley2058/termstyle/utils"
+)
 
 // Background colors
 const (
@@ -26,4 +30,14 @@ const (
 // TrueColorBackground construct terminal usable true color string for background
 func TrueColorBackground(r uint8, g uint8, b uint8) string {
 	return fmt.Sprintf("48;%d;%d;%d", r, g, b)
+}
+
+// HSL return converted true color string (0<= h <360, 0<= s,l <=1)
+func HSL(h float64, s float64, l float64) string {
+	return TrueColorBackground(utils.HslToRgb(h, s, l))
+}
+
+// Bg256 256 colors for backgrounds
+func Bg256(num uint8) string {
+	return fmt.Sprintf("\033[38;5;%dm", num)
 }

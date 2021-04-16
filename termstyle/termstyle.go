@@ -4,7 +4,7 @@ import "fmt"
 
 const nc string = "\033[0m"
 
-// Style style str with otps
+// Style style str with opts
 func Style(str string, opts ...string) string {
 	if len(opts) == 0 {
 		return str
