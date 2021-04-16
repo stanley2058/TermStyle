@@ -27,7 +27,7 @@ const (
 	BrightWhite   string = "97"
 )
 
-// TrueColor construct terminal usable true color string
+// TrueColor construct terminal usable true color string, not all terminal support this.
 func TrueColor(r uint8, g uint8, b uint8) string {
 	return fmt.Sprintf("38;%d;%d;%d", r, g, b)
 }
