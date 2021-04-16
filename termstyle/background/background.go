@@ -37,7 +37,12 @@ func HSL(h float64, s float64, l float64) string {
 	return TrueColorBackground(utils.HslToRgb(h, s, l))
 }
 
-// Bg256 256 colors for backgrounds
+// Bg256 256 colors for background
+//   0-7:      standard colors (Black, Red, Green, Yellow, Blue, Magenta, Cyan, White)
+//   8-15:     high intensity colors
+//   16-231:   16 + 36×r + 6×g + b (0 ≤ r, g, b ≤ 5)
+//   232-255:  grayscale from black to white in 24 steps
+//   see: "https://jonasjacek.github.io/colors"
 func Bg256(num uint8) string {
 	return fmt.Sprintf("\033[38;5;%dm", num)
 }
