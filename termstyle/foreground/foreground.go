@@ -44,5 +44,5 @@ func HSL(h float64, s float64, l float64) string {
 //   232-255:  grayscale from black to white in 24 steps
 //   see: "https://jonasjacek.github.io/colors"
 func Fg256(num uint8) string {
-	return fmt.Sprintf("\033[38;5;%dm", num)
+	return fmt.Sprintf("38;5;%d", num)
 }
